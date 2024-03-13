@@ -1,0 +1,210 @@
+{% include 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Teko:wght@600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <title>About Page</title>
+    <style>
+      body {
+        background-image: url("{% static 'images/home-bg.svg' %}");
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+      }
+      .container-fluid {
+        text-align: center;
+        padding-top: 40px;
+      }
+      .title {
+        color: #aaf40c;
+        font-family: "Fjalla One", sans-serif;
+        font-size: 60px;
+      }
+      .title2 {
+        color: #aaf40c;
+        font-family: "Fjalla One", sans-serif;
+        font-size: 60px;
+      }
+      .maintxt {
+        font-weight: bold;
+        color: white;
+        font-size: 25px;
+      }
+      /* img{
+        width: 200px;
+        
+      } */
+      .card{
+      margin-left: 50px;
+      margin-right: 50px;
+      /* height: 22rem; */
+      width: 20rem;
+      /* box-shadow: 1px 0px 25px 1px black; */
+      border-radius: 20px;
+      overflow: hidden;
+      border-color: rgba(0,0,0,0);
+      
+    }
+    .card p{
+      color: black !important;
+    }
+    #facrow{
+      margin-bottom: 70px;
+      padding-left: 100px;
+    }
+    #facrow img{
+      height: 50px;
+      width: 50px;
+      margin: 5px;
+      margin-top: 10px;
+    }
+    #facrow .card{
+      height: 150px;
+      width: 150px;
+      align-items: center;
+
+    }
+    ::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="title" id="title1">Our Mission</h1>
+      <p class="maintxt">
+        Our mission is making it easier for everyone to play sports and
+        increasing the utilisation of facilities as a result. <br />
+
+        Sports play a pivotal role in bringing people together, sharing moments
+        and enhancing the well-being are reasons that <br />
+        form the essence of PlaySpots. Our Goal is making the sports simple
+      </p>
+      <h1 class="title" id="title2">Sports Activities</h1>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/cricket.png' %}" alt="Card image cap" height="250px">
+              <div class="card-body">
+                <h5 class="card-title">Cricket Ground</h5>
+                <p class="card-text">Big and spacious ground for cricket.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/football.png' %}" alt="Card image cap" height="250px">
+              <div class="card-body">
+                <h5 class="card-title">Football Ground</h5>
+                <p class="card-text">Big and spacious ground for Football.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/volley-ball.png' %}" alt="Card image cap" height="250px">
+              <div class="card-body">
+                <h5 class="card-title">Volley ball Court</h5>
+                <p class="card-text">Big and spacious court for volley ball.</p>
+              </div>
+            </div>
+          </div>
+            <div class="col-sm-3">
+              <div class="card">
+                <img class="card-img-top" src="{% static 'images/badminton.png' %}" alt="Card image cap" height="250px">
+                <div class="card-body">
+                  <h5 class="card-title">Badminton Court</h5>
+                  <p class="card-text">Big and spacious court for Badminton.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- facilities -->
+          <br>
+          <br>
+          <br>
+          <h1 class="title" id="title3">Facilities Available</h1>
+        <div class="row" id="facrow">
+          <div class="col-sm-3">
+            <div class="card" id="card2">
+              <img class="card-img-top" src="{% static 'images/parking.png' %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Parking</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card" id="card2">
+              <img class="card-img-top" src="{% static 'images/changingroom.png' %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Changing Room</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card" id="card2">
+              <img class="card-img-top" src="{% static 'images/washroom.png' %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Wash Room</h5>
+              </div>
+            </div>
+          </div>
+            <div class="col-sm-3">
+              <div class="card" id="card2">
+                <img class="card-img-top" src="{% static 'images/waterpurifier.png' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Purified Water</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='{% static "js/js_about.js" %}'></script>
+  </body>
+</html>
