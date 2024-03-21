@@ -1,0 +1,199 @@
+{% include 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <!-- gf -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <title>My Bookings</title>
+  <style>
+    /* .nav-link{
+    color: black !important;
+}
+.navbar-brand{
+    color: #097E52 !important;
+} */
+    body {
+      background-image: url("{% static 'images/home-bg.svg' %}");
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #aaf40c;
+      font-family: "Fjalla One", sans-serif;
+      font-size: 60px;
+      margin: 20px;
+      margin-top: 50px;
+    }
+
+    #cols {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    #maincont {
+      margin-top: 10px;
+    }
+
+    #btn1 {
+      background-color: red;
+      color: white;
+      border: white;
+      font-weight: bold;
+      font-size: 15px;
+      /* float:right; */
+      /* margin-left: 20px !important; */
+      padding: 20px;
+      padding-left: 37px;
+      padding-right: 37px;
+      border-radius: 10px;
+      transition: 1s;
+      font-family: "Kanit", sans-serif;
+      margin: 20px;
+    }
+
+    #btn1:hover {
+      background-color: #192335;
+      color: white;
+    }
+
+    .card-text {
+      padding: 36px;
+      font-size: 20px;
+      color: red;
+    }
+
+    #btn2 {
+      background-color: #f4590c;
+      color: white;
+      border: white;
+      font-weight: bold;
+      font-size: 15px;
+      float: right;
+      margin-top: 60px !important;
+      /* margin-left: 20px !important; */
+      padding: 10px;
+      padding-left: 37px;
+      padding-right: 37px;
+      border-radius: 10px;
+      transition: 1s;
+      font-family: "Kanit", sans-serif;
+      margin: 20px;
+    }
+
+    #btn2:hover {
+      background-color: #192335;
+      color: white;
+    }
+
+    .card-text {
+      padding: 36px;
+      font-size: 20px;
+      color: red;
+    }
+
+    #succesmsg {
+      position: fixed;
+      z-index: 1;
+      width: 500px;
+      /* margin-top: 5px; */
+      left: 35%;
+      text-align: center;
+    }
+
+    .no_book {
+      text-align: center;
+      color: black;
+      margin-left: 750px;
+      margin-top: 200px;
+    }
+    ::-webkit-scrollbar{
+            display: none;
+        }
+  </style>
+</head>
+
+<body>
+  <!-- message box -->
+  {% if msg %}
+  <div class="alert alert-danger alert-dismissible fade show" id="succesmsg" role="alert">
+     Booking Cancelled!!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %}
+  <!-- message ends -->
+
+  <div class="container-fluid" id="maincont">
+    <div class="row">
+      <div class="col-4">
+        <a href="main"><button id="btn2" class="btn" style="float: left;">My Dashboard</button></a>
+      </div>
+      <div class="col-4">
+        <h1 style="text-align: center">My Coach Bookings</h1>
+      </div>
+      <div class="col-4">
+        <a href="coachbook"><button id="btn2" class="btn">Book Coaches</button></a>
+      </div>
+    </div>
+    <div class="row">
+      {% if exist %}
+      {% for i in key %}
+      <div class="col-sm" id="cols">
+        <div class="card" style="width: 20rem;">
+          <div class="card-body" style="padding-bottom: 2px;">
+            <h5 class="card-title">Name: {{i.Coach}}</h5>
+            <h5>Game: {{i.Sports}}</h5>
+            <h5>Date: {{i.Bookdate}}</h5>
+            <h5>Time: {{i.Time}}</h5>
+          </div>
+          <form action="cancelcoachbooking" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="idnum" value="{{i.id}}">
+            <button action="submit" id="btn1" class="btn">Cancel Booking</button>
+          </form>       
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    
+  </div>
+  {% else %}
+    <p class="no_book">No Bookings available!</p>
+    {% endif %}
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script>
+      // Automatically dismiss the alert after 5 seconds (5000 milliseconds)
+      setTimeout(function() {
+          $('#succesmsg').alert('close');
+      }, 1500);
+  </script>
+</body>
+
+</html>

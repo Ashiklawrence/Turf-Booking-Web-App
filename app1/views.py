@@ -1,22 +1,26 @@
 from django.shortcuts import render,redirect
-from app1.models import Slot,BookedSlot,UserInfo
+from app1.models import Slot,BookedSlot,UserInfo,CoachInfos,BookedCoach
 from django.contrib.auth import authenticate,login as authlogin,logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
+from django.http import HttpResponse
 # from django.http import response
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
-        
-
-
-
 def register(request):
     return render(request,'register.html')
+def coach(request):
+    return render(request,'coach.html')
+def coachreg(request):
+    return render(request,'coachreg.html')
+
 
 def login(request):
     return render(request,'login.html')
+def coachlogin(request):
+    return render(request,'coachlogin.html')
 def about(request):
     return render(request,'about.html')
 def contact(request):
@@ -27,6 +31,94 @@ def bookslot(request):
     return render(request,'bookslot.html')
 
 
+
+def coachregistration(request):
+    a = request.POST['name']
+    b = request.FILES['image']
+    c = request.POST['sports']
+    d = request.POST['charge']
+    e = request.POST['summary']
+    f = request.POST['username']
+    g = request.POST['password']
+    h = request.POST['cnfrmpassword']
+    if CoachInfos.objects.filter(username = f).exists():
+        exist = True
+        return render(request,'coachreg.html',{'exist_msg':exist})
+    elif g == h:
+        x = CoachInfos(Name = a, Image = b, Sports = c,Charge = d,Summary = e, username = f, password = g)
+        x.save()
+        success = True
+        return render(request,'coachreg.html',{'success_msg':success})
+    else:
+        error = True
+        # messages.error(request,'Password does not match')
+        return render(request,'coachreg.html',{'error_msg':error})
+def coachlogging(request):
+    if request.POST:
+        u = request.POST['username']
+        p = request.POST['password']
+        try:
+            x = CoachInfos.objects.get(username = u)
+            if x.password == p :
+                x = CoachInfos.objects.get(username = u)
+                return render(request,'coachdash.html',{'key':x})
+            else:
+                error = True
+                return render(request,'coachlogin.html',{'error_msg':error})
+        except:
+            exist = True
+            return render(request,'coachlogin.html',{'exist_msg':exist})
+
+def coachbook(request):
+    x = CoachInfos.objects.all()
+    return render(request,'coachbook.html',{'coach':x})
+
+def coachbooking(request):
+    a = request.POST['username']
+    x = CoachInfos.objects.get(username = a)
+    return render(request,'coachbooking.html',{'i':x})
+
+def coachbooked(request):
+    a = request.POST['coach']
+    b = request.POST['sports']
+    c = request.POST['bookdate']
+    d = request.POST['radioval']
+    e = request.POST['bookeddate']
+    f = request.user
+    g = request.POST['coachusername']
+    x = CoachInfos.objects.get(username = g)
+    z = BookedCoach.objects.filter(Coach = a)
+    if z.filter(Bookdate =c).exists() and z.filter(Time = d).exists():
+        error = True
+        return render(request,'coachbooking.html',{'i':x,'bookerror':error})
+    else:
+        x = CoachInfos.objects.get(username = g)
+        y = BookedCoach(Coach = a,Sports = b,Bookdate = c,Time = d,Bookeddate = e,Bookedby = f)
+        y.save()
+        success = True
+        return render(request,'coachbooking.html',{'i':x,'success':success})
+def deletecoachprofile(request):
+    a = request.POST['username']
+    CoachInfos.objects.filter(username = a).delete()
+    msg = True
+    return render(request,'coach.html',{'msg':msg})
+
+def mycoachbookings(request):
+    a = request.user
+    y = BookedCoach.objects.filter(Bookedby=a)
+    x = reversed(y)
+    ex = BookedCoach.objects.filter(Bookedby=a).exists()
+    return render(request,'mycoachbookings.html',{'key':x,'exist':ex})
+
+def cancelcoachbooking(request):
+    a = request.POST['idnum']
+    b = request.user
+    BookedCoach.objects.filter(id = a).delete()
+    y = BookedCoach.objects.filter(Bookedby=b)
+    x = reversed(y)
+    ex = BookedCoach.objects.filter(Bookedby=b).exists()
+    msg = True
+    return render(request,'mycoachbookings.html',{'key':x,'exist':ex,'msg':msg})
 
 def registration(request):
     a = request.POST['name']
@@ -111,7 +203,8 @@ def slotbooking(request):
 def mybookings(request):
     # a = request.COOKIES.get('cur_user')
     a = request.user
-    x = BookedSlot.objects.filter(Bookedby=a)
+    y = BookedSlot.objects.filter(Bookedby=a)
+    x = reversed(y)
     ex = BookedSlot.objects.filter(Bookedby=a).exists()
     return render(request,'mybookings.html',{'key':x,'exist':ex})
 

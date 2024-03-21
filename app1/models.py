@@ -8,6 +8,23 @@ class UserInfo(User):
     Email = models.EmailField()
     Phno = models.IntegerField()
 
+class CoachInfos(models.Model):
+    Image = models.ImageField()
+    Name = models.CharField(max_length=100)
+    Sports = models.CharField(max_length=50)
+    Summary = models.TextField()
+    Charge = models.IntegerField()
+    username = models.TextField()
+    password =  models.TextField()
+
+class BookedCoach(models.Model):
+    Coach = models.TextField()
+    Sports = models.TextField()
+    Bookdate = models.TextField()
+    Time = models.TextField(blank=True)
+    Bookeddate = models.TextField()
+    Bookedby = models.TextField()
+
 class UserDetail(models.Model):
     Name = models.CharField(max_length=100)
     Email = models.EmailField()

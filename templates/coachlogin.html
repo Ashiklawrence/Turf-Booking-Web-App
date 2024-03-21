@@ -1,0 +1,197 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Teko:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Login Page</title>
+    <style>
+          /* nav */
+      .nav-link{
+    color: white !important;
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 1s;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.nav-link:hover{
+  color: #AAF40C !important;
+  /* color: white !important; */
+}
+#navbc{
+background-color: transparent !important;
+position: fixed;
+z-index: 1;
+/* padding-top: 1rem;
+padding-bottom: 1rem; */
+/* background: linear-gradient(to top, #00FDB1, #000000) !important; */
+}
+      /* nav ends */
+        .firstcol{
+            /* background-image: url("{% static 'images/ftbl_bg.jpg' %}");
+            background-size: cover; */
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: url("{% static 'images/crct_bg.jpg' %}");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            width: 90%;
+        }
+        /* .secondcol{
+            height: 500px;
+            width: 500px;
+            background-color: white;
+        } */
+        .containerc{
+            min-height: 100vh;
+            /* min-width: 100vh; */
+            background-color: #F9F9F6;
+            padding-top: 160px;
+            margin: 0;
+            width: 122.5%;
+            /* height: 100vh; */
+        }
+        #box{
+            width: 500px;
+            border-radius: 10px;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 2px 2px 30px rgb(210, 210, 210);
+        }
+        #subbtn{
+            padding-left: 12.5rem;
+            padding-right: 12.5rem;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0;
+            background-color: #192335;
+            border: 0;
+            font-family: 'Kanit', sans-serif;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #subbtn:hover{
+             background-color: #097E52;
+}
+        input:focus{
+            box-shadow: none !important;
+            border-color: black !important;
+        }
+        .brand{
+            font-size: 60px; 
+            font-weight: bold;
+            font-family: 'Teko', sans-serif;
+            text-align: center;
+        }
+        .botmlnks{
+            display: block;
+            padding-top: 10px;
+            /* padding-left: 2px; */
+            text-decoration: none !important;
+            color: #097E52;
+            transition: 1s;
+            text-align: center;
+            font-family: 'Kanit', sans-serif;
+            font-size: 18px;
+        }
+        .botmlnks:hover{
+            color: #28A745;
+        }
+        #textbg{
+            margin-top: 300px;
+            width: 450px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 0;
+            border-radius: 5px;
+        }
+        .regtxt{
+            /* color: #AAF40C; */
+            color: #192335;
+            padding-top: 35px !important;
+            /* padding: 10px !important; */
+            font-family: 'Kanit', sans-serif;
+            font-weight: bold;
+            font-size: 4rem;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbc">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto" id="navbarlnk">
+            <li class="nav-item">
+              <a class="nav-link" href="coach">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- nav ends -->    
+    <div class="row">
+            <div class="col" class="firstcol">
+                <div class=container id="textbg">
+                    <h1 class="regtxt">COACH LOGIN</h1>
+                </div>
+            </div>
+            <div class="col" class="secondcol">
+                <div class="containerc">
+                    <h1 class="brand">TURF BOOKING</h1>
+                    <div class="container" id="box">
+                        <form action="coachlogging" method="post" class="needs-validation" novalidate>
+                          {% csrf_token %}
+                          <h2 style="text-align: center;">Welcome Back</h2>
+                          <p style="color: #808080; text-align: center;">Login in to your account</p>
+                              <div class="form-row">
+                                <div class="col">
+                                  <label for="validationTooltipUsername">Username</label>
+                                    <input type="text" name="username" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+                                    {% if exist_msg %}
+                                      <p style="color: red; margin: 0; padding: 0;">User does not exist</p>
+                                    {% endif %}
+                                </div>
+                              </div>
+                              <br>
+                              <div class="form-row">
+                                  <label for="validationTooltip03">Password</label>
+                                  <input type="password" name="password" class="form-control" id="validationTooltip03" placeholder="Password" required>
+                                  {% if error_msg %}
+                                      <p style="color: red; margin: 0; padding: 0;">Wrong password</p>
+                                  {% endif %}
+                                </div>
+                            <div class="form-row" style="padding-top: 15px; padding-left: 5px;">
+                            <button class="btn btn-primary" id="subbtn" type="submit">Login</button>
+                        </div>
+                        </form>
+                    </div>
+                    <a class="botmlnks" href="register">New user? register</a>
+
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
